@@ -3,11 +3,18 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.security.NoSuchAlgorithmException;
+import java.util.*;
+import java.security.Key;
+import javax.crypto.*;
+import javax.crypto.spec.SecretKeySpec;
 
 class Login implements ActionListener{
     static int W = 400;
+    // tipo di algoritmo
+    private static final String ALGORITHM = "AES";
+    // chiave segreta da 16 bytes
+    private static final String SECRET_KEY = "Rubricapsw123456";
     JFrame f;
     JButton log;
     JTextField user;
@@ -57,9 +64,8 @@ class Login implements ActionListener{
             // controllo se i campi non sono vuoti
             if (!user.getText().isEmpty() && !password.getText().isEmpty()) {
                 // controllo se il login è corretto
-
                 if (checkLog()){
-                    JOptionPane.showMessageDialog(f, "Benvenuto "+user.getText()+"!!!");
+                    //JOptionPane.showMessageDialog(f, "Benvenuto "+user.getText()+"!!!");
                     setAccesso();
                     f.dispose();
                 }
@@ -80,7 +86,7 @@ class Login implements ActionListener{
             reader = new Scanner(file);
             while (reader.hasNextLine()) {
                 // divido per la ,
-                String[] temp = reader.nextLine().split(",");
+                String[] temp = reader.nextLine().split(";");
                 // inserisco nell' HashMap i dati in ordine
                 data.put(temp[0],temp[1]);
             }
@@ -90,7 +96,7 @@ class Login implements ActionListener{
             // controllo se user esiste
             if (temp != null){
                 // controllo se la password corrisponde con user inserito
-                if (temp.equals(password.getText())){
+                if (pwsCheck(temp)){
                     return true;
                 }
                 // non corrisponde
@@ -102,15 +108,38 @@ class Login implements ActionListener{
         return false;
     }
 
+    boolean pwsCheck(String pswreal){
+        try {
+            // creazione della chiave segreta utilizzando l'algoritmo AES e la chiave segreta come array di byte
+            Key secretKey = new SecretKeySpec(SECRET_KEY.getBytes(), ALGORITHM);
+            // cifrario per crittografia
+            Cipher cifrario = Cipher.getInstance(ALGORITHM);
+            cifrario.init(Cipher.ENCRYPT_MODE, secretKey);
+            // crittografia della password inserita dall'utente con cifrario
+            byte[] encryptedPasswordBytes = cifrario.doFinal(password.getText().getBytes());
+            // conversione a stringa
+            String encryptedPasswordBase64 = Base64.getEncoder().encodeToString(encryptedPasswordBytes);
+            // controllo se password inserita e crittografata è uguale a quella salvata
+            if (encryptedPasswordBase64.equals(pswreal)){
+                return true;
+            }
+        }
+        catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }
+        return false;
+    }
+
     public boolean isAccesso() {
         return this.accesso;
+    }
+    public void setAccesso() {
+        this.accesso = true;
     }
 
     public String getUser(){
         String text = user.getText();
         return text;
     }
-    public void setAccesso() {
-        this.accesso = true;
-    }
+
 }
