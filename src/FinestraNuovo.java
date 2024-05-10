@@ -2,6 +2,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.regex.Pattern;
 
 class FinestraNuovo implements ActionListener {
     static int W = 400;
@@ -35,7 +42,7 @@ class FinestraNuovo implements ActionListener {
     // tutta la parte della text area
     private void textArea(){
         JPanel textarea = new JPanel(new FlowLayout());
-        textarea.setPreferredSize(new Dimension(W, 350));
+        textarea.setPreferredSize(new Dimension(W, 320));
         // etichette laterali
         JLabel labnome = new JLabel("Nome:");
         JLabel labcognome = new JLabel("Cognome:");
@@ -69,16 +76,83 @@ class FinestraNuovo implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == annulla){
+            FinestraPrinc.refreshforced=true;
             f.dispose();
-            //SwingUtilities.updateComponentTreeUI(f);
         }
         else if (e.getSource() == salva) {
             // controllo se tutti i campi  non sono vuoti
             if (!nome.getText().isEmpty() && !cognome.getText().isEmpty() && !telefono.getText().isEmpty() && !indirizzo.getText().isEmpty()&& !eta.getText().isEmpty()){
-                System.out.println("passato");
-                f.dispose();
-                //SwingUtilities.updateComponentTreeUI(f);
+                // controllo se eta numero con espressioni regolari
+                if (eta.getText().matches("-?\\d+(\\.\\d+)?")){
+                    aggiungiPersona();
+                    FinestraPrinc.refreshforced=true;
+                    f.dispose();
+                }
             }
         }
+    }
+
+    void aggiungiPersona(){
+        String[][] fileName = getFileTitle();
+        for (int i = 0; i < fileName.length; i++) {
+            // controllo se la persona è già stata inserita
+            if (nome.getText().toLowerCase().equals(fileName[i][0]) && cognome.getText().toLowerCase().equals(fileName[i][1])){
+                try {
+                    // accodo contenuto nuovo a file esistente con il true
+                    FileWriter myWriter = new FileWriter("src/informazioni/"+nome.getText().toUpperCase()+"-"+cognome.getText().toUpperCase()+".txt",true);
+                    myWriter.write("\n"+nome.getText()+";");
+                    myWriter.write(cognome.getText()+";");
+                    myWriter.write(indirizzo.getText()+";");
+                    myWriter.write(telefono.getText()+";");
+                    myWriter.write(eta.getText()+"\n");
+                    myWriter.close();
+                    System.out.println("Scritto file esistente");
+                } catch (IOException e) {
+                    System.out.println("An error occurred."+e);
+                }
+                JOptionPane.showMessageDialog(f, "Numero aggiunto per un contatto esistente!");
+                break;
+            }
+            else {
+                try {
+                    // crea file
+                    FileWriter myWriter = new FileWriter("src/informazioni/"+nome.getText().toUpperCase()+"-"+cognome.getText().toUpperCase()+".txt");
+                    // scrivo dati
+                    myWriter.write(nome.getText()+";");
+                    myWriter.write(cognome.getText()+";");
+                    myWriter.write(indirizzo.getText()+";");
+                    myWriter.write(telefono.getText()+";");
+                    myWriter.write(eta.getText()+"\n");
+
+                    myWriter.close();
+                } catch (IOException e) {
+                    System.out.println("An error occurred."+e);
+                }
+                JOptionPane.showMessageDialog(f, "Numero aggiunto per nuovo contatto!");
+                break;
+            }
+        }
+
+
+
+    }
+
+    static String [][] getFileTitle(){
+        List<File> fileList = Utente.getFiles();
+        String[][] fileName = new String[fileList.size()][2];
+        int j = 0;
+        for (File i: fileList){
+            // prendo path
+            String[] parts = i.toString().split("\\\\");
+            // divido in base al trattino prendendo solo titolo file
+            fileName[j] = parts[2].split("-");
+            // elimino estensione
+            fileName[j][1] = fileName[j][1].substring(0, fileName[j][1].lastIndexOf('.'));
+            // tutto minuscolo
+            fileName[j][0] = fileName[j][0].toLowerCase();
+            fileName[j][1] = fileName[j][1].toLowerCase();
+            j++;
+        }
+        return fileName;
     }
 }
