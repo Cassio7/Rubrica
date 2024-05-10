@@ -4,15 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1930315e-9e5e-4b09-ac30-e645d4f6edee" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/FinestraPrinc.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Login.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/informazioni/GIORGIO-VERDI.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/informazioni/NICOLA-AZZURRO.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/private/users.txt" afterDir="false" />
+    <list default="true" id="1930315e-9e5e-4b09-ac30-e645d4f6edee" name="Changes" comment="inserimento refresh frame ma commentato">
+      <change afterPath="$PROJECT_DIR$/src/Utente.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/informazioni/BABBO-NATALE.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/informazioni/BILL-GATES.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/informazioni/STEVE-JOBS.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FinestraNuovo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FinestraNuovo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FinestraPrinc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FinestraPrinc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Persona.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persona.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/informazioni/GIORGIO-VERDI.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/informazioni/NICOLA-AZZURRO.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/private/users.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/private/users.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,18 +61,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.Main.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Cassio/Documents/Programmazione/Java/Rubrica",
-    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.Language Defaults"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Cassio/Documents/Programmazione/Java/Rubrica&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.Language Defaults&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -77,6 +82,63 @@
       <option name="presentableId" value="Default" />
       <updated>1715262468401</updated>
     </task>
+    <task id="LOCAL-00001" summary="creazione del login, con finestra, controllo utente e psw">
+      <option name="closed" value="true" />
+      <created>1715299484005</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1715299484005</updated>
+    </task>
+    <task id="LOCAL-00002" summary="update">
+      <option name="closed" value="true" />
+      <created>1715299530124</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1715299530124</updated>
+    </task>
+    <task id="LOCAL-00003" summary="utenti registrati">
+      <option name="closed" value="true" />
+      <created>1715299544694</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1715299544694</updated>
+    </task>
+    <task id="LOCAL-00004" summary="file salvataggio dati">
+      <option name="closed" value="true" />
+      <created>1715299585574</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1715299585574</updated>
+    </task>
+    <task id="LOCAL-00005" summary="lettura da file ed altri cambiamenti">
+      <option name="closed" value="true" />
+      <created>1715299636376</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1715299636376</updated>
+    </task>
+    <task id="LOCAL-00006" summary="inserimento in una classe">
+      <option name="closed" value="true" />
+      <created>1715299648734</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1715299648734</updated>
+    </task>
+    <task id="LOCAL-00007" summary="inserimento refresh frame ma commentato">
+      <option name="closed" value="true" />
+      <created>1715299704931</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1715299704931</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -92,5 +154,13 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="creazione del login, con finestra, controllo utente e psw" />
+    <MESSAGE value="update" />
+    <MESSAGE value="utenti registrati" />
+    <MESSAGE value="file salvataggio dati" />
+    <MESSAGE value="lettura da file ed altri cambiamenti" />
+    <MESSAGE value="inserimento in una classe" />
+    <MESSAGE value="inserimento refresh frame ma commentato" />
+    <option name="LAST_COMMIT_MESSAGE" value="inserimento refresh frame ma commentato" />
   </component>
 </project>
