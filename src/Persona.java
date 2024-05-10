@@ -4,7 +4,7 @@ class Persona {
     String nome, cognome, telefono, indirizzo;
     int eta;
 
-    Persona(String nome, String cognome, String telefono, String indirizzo, int eta) {
+    Persona(String nome, String cognome, String indirizzo, String telefono, int eta) {
         this.nome = nome;
         this.cognome = cognome;
         this.indirizzo = indirizzo;
