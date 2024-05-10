@@ -64,16 +64,20 @@ class FinestraNuovo implements ActionListener {
         f.getContentPane().add(textarea, BorderLayout.NORTH);
 
     }
+
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == annulla)
+        if (e.getSource() == annulla){
             f.dispose();
+            //SwingUtilities.updateComponentTreeUI(f);
+        }
         else if (e.getSource() == salva) {
             // controllo se tutti i campi  non sono vuoti
             if (!nome.getText().isEmpty() && !cognome.getText().isEmpty() && !telefono.getText().isEmpty() && !indirizzo.getText().isEmpty()&& !eta.getText().isEmpty()){
-
                 System.out.println("passato");
-
+                f.dispose();
+                //SwingUtilities.updateComponentTreeUI(f);
             }
         }
     }
