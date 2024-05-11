@@ -16,7 +16,7 @@ class FinestraNuovo implements ActionListener {
     JButton salva, annulla;
     JTextField nome, cognome, telefono, indirizzo, eta;
 
-    FinestraNuovo(){
+    FinestraNuovo() {
         f = new JFrame("Editor");
 
         JToolBar toolBar = new JToolBar();
@@ -40,7 +40,7 @@ class FinestraNuovo implements ActionListener {
     }
 
     // tutta la parte della text area
-    private void textArea(){
+    private void textArea() {
         JPanel textarea = new JPanel(new FlowLayout());
         textarea.setPreferredSize(new Dimension(W, 320));
         // etichette laterali
@@ -52,7 +52,7 @@ class FinestraNuovo implements ActionListener {
         // 5 campi inserimento
         nome = new JTextField(32);
         cognome = new JTextField(32);
-        telefono= new JTextField(32);
+        telefono = new JTextField(32);
         indirizzo = new JTextField(32);
         eta = new JTextField(32);
 
@@ -67,7 +67,7 @@ class FinestraNuovo implements ActionListener {
         textarea.add(indirizzo);
         textarea.add(labeta);
         textarea.add(eta);
-        
+
         f.getContentPane().add(textarea, BorderLayout.NORTH);
 
     }
@@ -75,58 +75,60 @@ class FinestraNuovo implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == annulla){
-            FinestraPrinc.refreshforced=true;
+        // non succede nulla ma ricarico pagina per far riapparire finestra principale
+        if (e.getSource() == annulla) {
+            FinestraPrinc.refreshforced = true;
             f.dispose();
-        }
+        } //se viene premuto salva
         else if (e.getSource() == salva) {
             // controllo se tutti i campi  non sono vuoti
-            if (!nome.getText().isEmpty() && !cognome.getText().isEmpty() && !telefono.getText().isEmpty() && !indirizzo.getText().isEmpty()&& !eta.getText().isEmpty()){
-                // controllo se eta numero con espressioni regolari
-                if (eta.getText().matches("-?\\d+(\\.\\d+)?")){
+            if (!nome.getText().isEmpty() && !cognome.getText().isEmpty() && !telefono.getText().isEmpty() && !indirizzo.getText().isEmpty() && !eta.getText().isEmpty()) {
+                // controllo se eta e telefono sono numeri con espressioni regolari
+                if (eta.getText().matches("-?\\d+(\\.\\d+)?") && telefono.getText().matches("-?\\d+(\\.\\d+)?")) {
+                    // aggiungo persona
                     aggiungiPersona();
-                    FinestraPrinc.refreshforced=true;
+                    // cambio flag in modo da ricaricare pagina principale
+                    FinestraPrinc.refreshforced = true;
                     f.dispose();
-                }
-            }
+                } else JOptionPane.showMessageDialog(f, "Inserisci numeri nei campi età e telefono");
+            } else JOptionPane.showMessageDialog(f, "Assicurati di inserire tutti i campi");
         }
     }
 
-    void aggiungiPersona(){
-        String[][] fileName = getFileTitle();
+    void aggiungiPersona() {
+        String[][] fileName = getFileTitles();
         for (int i = 0; i < fileName.length; i++) {
             // controllo se la persona è già stata inserita
-            if (nome.getText().toLowerCase().equals(fileName[i][0]) && cognome.getText().toLowerCase().equals(fileName[i][1])){
+            if (nome.getText().toLowerCase().equals(fileName[i][0]) && cognome.getText().toLowerCase().equals(fileName[i][1])) {
                 try {
                     // accodo contenuto nuovo a file esistente con il true
-                    FileWriter myWriter = new FileWriter("src/informazioni/"+nome.getText().toUpperCase()+"-"+cognome.getText().toUpperCase()+".txt",true);
-                    myWriter.write("\n"+nome.getText()+";");
-                    myWriter.write(cognome.getText()+";");
-                    myWriter.write(indirizzo.getText()+";");
-                    myWriter.write(telefono.getText()+";");
-                    myWriter.write(eta.getText()+"\n");
-                    myWriter.close();
-                    System.out.println("Scritto file esistente");
-                } catch (IOException e) {
-                    System.out.println("An error occurred."+e);
-                }
-                JOptionPane.showMessageDialog(f, "Numero aggiunto per un contatto esistente!");
-                break;
-            }
-            else {
-                try {
-                    // crea file
-                    FileWriter myWriter = new FileWriter("src/informazioni/"+nome.getText().toUpperCase()+"-"+cognome.getText().toUpperCase()+".txt");
-                    // scrivo dati
-                    myWriter.write(nome.getText()+";");
-                    myWriter.write(cognome.getText()+";");
-                    myWriter.write(indirizzo.getText()+";");
-                    myWriter.write(telefono.getText()+";");
-                    myWriter.write(eta.getText()+"\n");
+                    FileWriter myWriter = new FileWriter("src/informazioni/" + nome.getText().toUpperCase() + "-" + cognome.getText().toUpperCase() + ".txt", true);
+                    myWriter.write("\n" + nome.getText() + ";");
+                    myWriter.write(cognome.getText() + ";");
+                    myWriter.write(indirizzo.getText() + ";");
+                    myWriter.write(telefono.getText() + ";");
+                    myWriter.write(eta.getText());
 
                     myWriter.close();
                 } catch (IOException e) {
-                    System.out.println("An error occurred."+e);
+                    System.out.println(e);
+                }
+                JOptionPane.showMessageDialog(f, "Numero aggiunto per un contatto esistente!");
+                break;
+            } else {
+                try {
+                    // crea file
+                    FileWriter myWriter = new FileWriter("src/informazioni/" + nome.getText().toUpperCase() + "-" + cognome.getText().toUpperCase() + ".txt");
+                    // scrivo dati
+                    myWriter.write(nome.getText() + ";");
+                    myWriter.write(cognome.getText() + ";");
+                    myWriter.write(indirizzo.getText() + ";");
+                    myWriter.write(telefono.getText() + ";");
+                    myWriter.write(eta.getText());
+
+                    myWriter.close();
+                } catch (IOException e) {
+                    System.out.println(e);
                 }
                 JOptionPane.showMessageDialog(f, "Numero aggiunto per nuovo contatto!");
                 break;
@@ -134,14 +136,14 @@ class FinestraNuovo implements ActionListener {
         }
 
 
-
     }
 
-    static String [][] getFileTitle(){
+    // funzione che ritorna una matrice di stringhe per contenenti i titoli dei file trovati
+    static String[][] getFileTitles() {
         List<File> fileList = Utente.getFiles();
         String[][] fileName = new String[fileList.size()][2];
         int j = 0;
-        for (File i: fileList){
+        for (File i : fileList) {
             // prendo path
             String[] parts = i.toString().split("\\\\");
             // divido in base al trattino prendendo solo titolo file
