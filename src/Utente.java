@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.Vector;
 
+// classe per utente registrato
 class Utente {
 
     private String username;
@@ -25,7 +26,7 @@ class Utente {
                 while (reader.hasNextLine()) {
                     // inserisco la riga, separandola tramite la virgola, dentro persona, eta ha un controllo sullo spazio per eliminare errore casting
                     String[] data = reader.nextLine().split(";");
-                    if (data[0].length() > 0){
+                    if (data[0].length() > 0) {
                         temp.add(new Persona(data[0], data[1], data[2], data[3], Integer.parseInt(data[4].replaceAll("\\s+", ""))));
                     }
                 }
@@ -36,13 +37,14 @@ class Utente {
             System.out.println(e);
         }
     }
+
     // ritorna la lista dei file presenti
-    static List getFiles(){
+    static List getFiles() {
         File cartella = new File("src/informazioni/");
         List<File> fileList = Arrays.asList(cartella.listFiles());
         return fileList;
     }
-
+    // ritorno username
     public String getUsername() {
         return username;
     }
