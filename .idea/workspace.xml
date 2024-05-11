@@ -1,23 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Rubrica:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1930315e-9e5e-4b09-ac30-e645d4f6edee" name="Changes" comment="inserimento refresh frame ma commentato">
-      <change afterPath="$PROJECT_DIR$/src/Utente.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/informazioni/BABBO-NATALE.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/informazioni/BILL-GATES.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/informazioni/STEVE-JOBS.txt" afterDir="false" />
+    <list default="true" id="1930315e-9e5e-4b09-ac30-e645d4f6edee" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Rubrica_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/FinestraModifica.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FinestraNuovo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FinestraNuovo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FinestraPrinc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FinestraPrinc.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Persona.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persona.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/informazioni/GIORGIO-VERDI.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/informazioni/NICOLA-AZZURRO.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/private/users.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/private/users.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/informazioni/BABBO-NATALE.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/informazioni/BABBO-NATALE.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/informazioni/BILL-GATES.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/informazioni/BILL-GATES.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/informazioni/STEVE-JOBS.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/informazioni/STEVE-JOBS.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,10 +72,14 @@
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Cassio/Documents/Programmazione/Java/Rubrica&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.Language Defaults&quot;
   }
 }</component>
@@ -138,7 +148,63 @@
       <option name="project" value="LOCAL" />
       <updated>1715299704931</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="update">
+      <option name="closed" value="true" />
+      <created>1715360217470</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1715360217471</updated>
+    </task>
+    <task id="LOCAL-00009" summary="refresh della pagina al cambiamento">
+      <option name="closed" value="true" />
+      <created>1715360247651</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1715360247651</updated>
+    </task>
+    <task id="LOCAL-00010" summary="aggiunta persona funzionante, con controllo se il file gia esiste o da creare">
+      <option name="closed" value="true" />
+      <created>1715360289113</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1715360289113</updated>
+    </task>
+    <task id="LOCAL-00011" summary="classe che rappresenta utente che si collega, ed alcune funzioni utili al funzionamento">
+      <option name="closed" value="true" />
+      <created>1715360426725</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1715360426725</updated>
+    </task>
+    <task id="LOCAL-00012" summary="ora il login prende una password e la codifica e confronta con una salvata">
+      <option name="closed" value="true" />
+      <created>1715360455248</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1715360455248</updated>
+    </task>
+    <task id="LOCAL-00013" summary="update swap">
+      <option name="closed" value="true" />
+      <created>1715360473245</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1715360473245</updated>
+    </task>
+    <task id="LOCAL-00014" summary="eliminazione contatto e modifica refresh, ora funziona">
+      <option name="closed" value="true" />
+      <created>1715360515120</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1715360515120</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -155,12 +221,18 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="creazione del login, con finestra, controllo utente e psw" />
-    <MESSAGE value="update" />
     <MESSAGE value="utenti registrati" />
     <MESSAGE value="file salvataggio dati" />
     <MESSAGE value="lettura da file ed altri cambiamenti" />
     <MESSAGE value="inserimento in una classe" />
     <MESSAGE value="inserimento refresh frame ma commentato" />
-    <option name="LAST_COMMIT_MESSAGE" value="inserimento refresh frame ma commentato" />
+    <MESSAGE value="update" />
+    <MESSAGE value="refresh della pagina al cambiamento" />
+    <MESSAGE value="aggiunta persona funzionante, con controllo se il file gia esiste o da creare" />
+    <MESSAGE value="classe che rappresenta utente che si collega, ed alcune funzioni utili al funzionamento" />
+    <MESSAGE value="ora il login prende una password e la codifica e confronta con una salvata" />
+    <MESSAGE value="update swap" />
+    <MESSAGE value="eliminazione contatto e modifica refresh, ora funziona" />
+    <option name="LAST_COMMIT_MESSAGE" value="eliminazione contatto e modifica refresh, ora funziona" />
   </component>
 </project>
