@@ -18,15 +18,17 @@ class FinestraPrinc implements ActionListener {
     JFrame f;
     JTable t;
     JButton nuovo, modifica, elimina;
+    Vector<Persona> persone;
 
     FinestraPrinc(Vector<Persona> temp, Utente user) {
         refresh = false;
         refreshforced = false;
-        f = new JFrame("Rubrica di "+user.getUsername());
+        this.persone = temp;
+        f = new JFrame("Rubrica di " + user.getUsername());
         // titoli colonne
         String[] colonna = {"Nome", "Cognome", "Numero"};
         // crea la tabella ed inserisce come righe le informazioni prese dalla funzione
-        t = new JTable(getData(temp), colonna);
+        t = new JTable(getData(persone), colonna);
         t.setBounds(30, 40, 200, 300);
         t.setRowSelectionAllowed(true);
         // per scorrere
@@ -91,18 +93,20 @@ class FinestraPrinc implements ActionListener {
             f.dispose();
         } else if (e.getSource() == modifica) {
             // controllo riga selezionata
-            if (t.getSelectedRow() != -1){
-
-            }else JOptionPane.showMessageDialog(f, "Seleziona una riga!!");
+            if (t.getSelectedRow() != -1) {
+                // avvia finestra di mofica
+                new FinestraModifica(persone.get(t.getSelectedRow()));
+                f.dispose();
+            } else JOptionPane.showMessageDialog(f, "Seleziona una riga!!");
 
         } else if (e.getSource() == elimina) {
             // controllo riga selezionata
-            if (t.getSelectedRow() != -1){
+            if (t.getSelectedRow() != -1) {
                 // finestra di scelta eliminazione
-                int risposta  =JOptionPane.showConfirmDialog(f,
-                        "Eliminare la persona "+
-                                t.getModel().getValueAt(t.getSelectedRow(), 0) + " "+
-                                t.getModel().getValueAt(t.getSelectedRow(), 1) + "?",
+                int risposta = JOptionPane.showConfirmDialog(f,
+                        "Eliminare la persona " +
+                                persone.get(t.getSelectedRow()).nome + " " +
+                                persone.get(t.getSelectedRow()).cognome + "?",
                         "Sei sicuro?",
                         JOptionPane.YES_NO_OPTION);
                 if (risposta == JOptionPane.YES_OPTION) {
@@ -110,19 +114,19 @@ class FinestraPrinc implements ActionListener {
                     setRefresh(true);
                     f.dispose();
                 }
-            }else JOptionPane.showMessageDialog(f, "Seleziona una riga!!");
+            } else JOptionPane.showMessageDialog(f, "Seleziona una riga!!");
         }
     }
 
-    void eliminaPersona(){
-        String[][] fileName = FinestraNuovo.getFileTitle();
+    void eliminaPersona() {
+        String[][] fileName = FinestraNuovo.getFileTitles();
         for (int i = 0; i < fileName.length; i++) {
             String nome, cognome, numero;
-            nome = t.getModel().getValueAt(t.getSelectedRow(), 0).toString().toLowerCase();
-            cognome = t.getModel().getValueAt(t.getSelectedRow(), 1).toString().toLowerCase();
-            numero = t.getModel().getValueAt(t.getSelectedRow(), 2).toString().toLowerCase();
+            nome = persone.get(t.getSelectedRow()).nome.toLowerCase();
+            cognome = persone.get(t.getSelectedRow()).cognome.toLowerCase();
+            numero = persone.get(t.getSelectedRow()).telefono.toLowerCase();
             // trovato file corrispondente alla persona
-            if (nome.equals(fileName[i][0]) && cognome.equals(fileName[i][1])){
+            if (nome.equals(fileName[i][0]) && cognome.equals(fileName[i][1])) {
                 // prendo lista file
                 List<File> fileList = Utente.getFiles();
                 try {
@@ -132,17 +136,16 @@ class FinestraPrinc implements ActionListener {
                     File tempFile = new File("src/informazioni/temp.txt");
                     FileWriter myWriter = new FileWriter(tempFile);
                     // leggo tutto
-                    while (reader.hasNextLine()){
+                    while (reader.hasNextLine()) {
                         String line = reader.nextLine();
                         String[] data = line.split(";");
-                        // se il numero corrisponde non trascrivo la riga perche mando continue
-                        if (data[3].equals(numero)){
+                        // se il numero corrisponde non trascrivo la riga perchè mando continue
+                        if (data[3].equals(numero)) {
                             continue;
                         }
-                        // se il numero non corrisponde riscrivo sul file di appoggio
-                        if (reader.hasNextLine()){
-                            myWriter.write(line+"\n");
-                        }else myWriter.write(line);
+                        if (reader.hasNextLine()) {
+                            myWriter.write(line + "\n");
+                        } else myWriter.write(line);
 
                     }
                     reader.close();
@@ -151,18 +154,20 @@ class FinestraPrinc implements ActionListener {
                     File swap = new File(fileList.get(i).toString());
                     fileList.get(i).delete();
                     tempFile.renameTo(swap);
-                }catch (FileNotFoundException e){
+                } catch (FileNotFoundException e) {
                     System.out.println(e);
                 } catch (IOException e) {
                     System.out.println(e);
                 }
+                break;
             }
         }
     }
-
+    // cambio lo stato del flag per ricaricare la pagina quando necessario
     void setRefresh(boolean refresh) {
         this.refresh = refresh;
     }
+    // ritorno la variabile
     boolean getRefresh() {
         return this.refresh;
     }
