@@ -9,32 +9,32 @@ import java.awt.*;
 import java.awt.event.*;
 
 
-
-
-
 public class Main {
     public static void main(String[] args) {
-
+        // parte di login utente
         Login login = new Login();
+        // il login finisce quando la variabile accesso diventa positiva
         while (true) {
             if (login.isAccesso())
                 break;
 
         }
+        // vettore di salvataggio di tutte le persone
         Vector<Persona> persone = new Vector<>();
+        //creo utente con il nome inserito nell'user
         Utente utente = new Utente(login.getUser());
-        //persone.add(new Persona("Giorgio", "Verdi", "3334414987", "Via Aranciotto 77", 23));
+        // populo il vettore
         utente.getData(persone);
-        FinestraPrinc finestraPrinc = new FinestraPrinc(persone,utente);
+        // avvio la finestra principale ed inserisco le persone all interno
+        FinestraPrinc finestraPrinc = new FinestraPrinc(persone, utente);
+        // ciclo di funzionamento
         while (true) {
-            if (finestraPrinc.getRefresh() || FinestraPrinc.refreshforced){
+            // se no dei 2 flag viene modificato è necessario ricaricare la pagina per nuovi contenuti
+            if (finestraPrinc.getRefresh() || FinestraPrinc.refreshforced) {
                 persone = new Vector<>();
                 utente.getData(persone);
-                finestraPrinc = new FinestraPrinc(persone,utente);
+                finestraPrinc = new FinestraPrinc(persone, utente);
             }
-
         }
     }
-
-
 }
